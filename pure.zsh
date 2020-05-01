@@ -133,7 +133,7 @@ prompt_pure_preprompt_render() {
 	[[ -n $prompt_pure_state[username] ]] && preprompt_parts+=($prompt_pure_state[username])
 
 	# Set the path.
-	preprompt_parts+=('%F{${prompt_pure_colors[path]}}%~%f')
+	preprompt_parts+=('%F{${prompt_pure_colors[path]}}%2~%f')
 
 	# Git branch and dirty status info.
 	typeset -gA prompt_pure_vcs_info
@@ -181,7 +181,7 @@ prompt_pure_preprompt_render() {
 
 	if [[ $1 == precmd ]]; then
 		# Initial newline, for spaciousness.
-		print
+		# print
 	elif [[ $prompt_pure_last_prompt != $expanded_prompt ]]; then
 		# Redraw the prompt.
 		prompt_pure_reset_prompt
@@ -196,7 +196,7 @@ prompt_pure_precmd() {
 	unset prompt_pure_cmd_timestamp
 
 	# Shows the full path in the title.
-	prompt_pure_set_title 'expand-prompt' '%~'
+	prompt_pure_set_title 'expand-prompt' '%2~'
 
 	# Modify the colors if some have changed..
 	prompt_pure_set_colors
